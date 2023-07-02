@@ -55,3 +55,14 @@ CSV.foreach(Rails.root.join('db', 'books.csv'), headers: true) do |row|
   book.save
   book_count += 1
 end
+
+# Generate Reviews
+Book.all.each do |book|
+  rand(1..5).times do
+    Review.create!(
+      rating: rand(1..5),
+      comment: Faker::Lorem.paragraph(sentence_count: 3),
+      book: book
+    )
+  end
+end

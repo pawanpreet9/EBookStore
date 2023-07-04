@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu</title>
+</head>
+<body>
+  <h1>Menu</h1>
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <%= link_to book.title, book_path(book) %>
+        <ul>
+          <li><strong>Author:</strong> <%= book.author.name %></li>
+          <li>
+            <strong>Genres:</strong>
+            <ul>
+              <% book.genres.each do |genre| %>
+                <li><%= genre.name %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

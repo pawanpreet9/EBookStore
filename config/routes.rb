@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   get '/about', to: 'about#about'
   root 'home#index'
   get '/menu', to: 'books#menu'
-
+get '/home', to: 'home#index'
   get '/genres', to: 'genres#index'
   resources :books, only: [:index, :show]
 
   resources :stores
+  resources :genres
   get '/search', to: 'books#search', as: 'search_books'
 
 

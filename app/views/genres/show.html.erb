@@ -3,6 +3,6 @@
 <% @books.each do |book| %>
   <h3><%= link_to book.title, book_path(book) %></h3>
   <p><strong>Author:</strong> <%= book.author.name %></p>
-  <!-- Add other book details you want to display -->
+
   <hr>
 <% end %>

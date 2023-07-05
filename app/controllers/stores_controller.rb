@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.all
+    @stores = Store.all.page(params[:page]).per(10)
   end
 
   def show

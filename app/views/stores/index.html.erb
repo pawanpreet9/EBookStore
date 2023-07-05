@@ -1,0 +1,11 @@
+<h1>All Stores</h1>
+<ul>
+  <% @stores.each do |store| %>
+    <li>
+      <%= link_to store.name, store_path(store) %>
+      <p><strong>Location:</strong> <%= store.location %></p>
+      <p><strong>City:</strong> <%= store.city %></p>
+
+    </li>
+  <% end %>
+</ul>

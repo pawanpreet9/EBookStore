@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/genres', to: 'genres#index'
   resources :books, only: [:index, :show]
 
-  resources :stores, only: [:show]
+  resources :stores
   get '/search', to: 'books#search', as: 'search_books'
 
 

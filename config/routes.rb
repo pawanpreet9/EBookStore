@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/menu', to: 'books#menu'
 
-
+  get '/genres', to: 'genres#index'
   resources :books, only: [:index, :show]
-  resources :genres, only: [:show]
+
   resources :stores, only: [:show]
   get '/search', to: 'books#search', as: 'search_books'
 

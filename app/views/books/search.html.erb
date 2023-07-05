@@ -1,0 +1,26 @@
+<h1>Search Results</h1>
+
+<% if @books && @books.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= link_to book.title, book_path(book) %></td>
+          <td><%= book.author.name %></td>
+          <td><%= book.genres.pluck(:name).join(', ') %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+
+  <p>No results found.</p>
+<% end %>

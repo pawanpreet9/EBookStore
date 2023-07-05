@@ -9,4 +9,11 @@ Rails.application.routes.draw do
   get '/menu', to: 'books#menu'
 
 
+  resources :books, only: [:index, :show]
+  resources :genres, only: [:show]
+  resources :stores, only: [:show]
+  get '/search', to: 'books#search', as: 'search_books'
+
+
+
 end

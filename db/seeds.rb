@@ -17,9 +17,18 @@ CSV.foreach(Rails.root.join('db', 'authors.csv'), headers: true) do |row|
 end
 
 # Seed Genres
-50.times do
-  Genre.create(name: Faker::Book.genre)
+genres = []
+20.times do
+  genres = Genre.new(name: Faker::Book.unique.genre)
+  if(genres.save)
+    puts "successfully saved"
+
+else
+  puts "error"
 end
+end
+
+
 
 # Seed Stores
 50.times do
@@ -42,15 +51,24 @@ CSV.foreach(Rails.root.join('db', 'books.csv'), headers: true) do |row|
     publisher: row['publisher']
   )
 
-  rand(1..3).times do
-    genre = Genre.order('RANDOM()').first
-    book.genres << genre
-  end
+ # genres = Genre.order('RANDOM()').limit(rand(1..3))
+  #genres.each do |genre|
+   # book.genres << genre
+  #end
 
-  rand(1..3).times do
-    store = Store.order('RANDOM()').first
-    book.stores << store
-  end
+ # rand(1..3).times do
+   # store = Store.order('RANDOM()').first
+  #  book.stores << store
+#  end
+# Assign unique genres to the book
+genre_ids = Genre.pluck(:id).sample(rand(1..3))
+genres = Genre.where(id: genre_ids)
+book.genres << genres
+
+# Assign multiple stores to the book
+store_ids = Store.pluck(:id).sample(rand(1..3))
+stores = Store.where(id: store_ids)
+book.stores << stores
 
   book.save
   book_count += 1

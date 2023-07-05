@@ -6,12 +6,13 @@
 <p><strong>ISBN:</strong> <%= @book.isbn.nil? ? 'Not Available' : @book.isbn %></p>
 <p>
             <strong>Genres:</strong>
+            </p>
             <ul>
               <% @book.genres.each do |genre| %>
                  <li><%= link_to genre.name, genre_path(genre) %></li>
               <% end %>
             </ul>
-          </p>
+
 <p><strong>Average Rating:</strong><%= @book.average_rating %> </p>
 <% if @book.average_rating && @book.average_rating > 4.5 %>
   <p><u>This book has an excellent average rating!</u></p>

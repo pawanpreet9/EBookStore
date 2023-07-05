@@ -1,6 +1,7 @@
 <h1>Search Results</h1>
 
 <% if @books && @books.any? %>
+  <%= paginate @books %>
   <table>
     <thead>
       <tr>

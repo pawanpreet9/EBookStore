@@ -14,12 +14,12 @@ class BooksController < ApplicationController
 
     # Apply text search if query is present
     if query.present?
-      @books = books.where('lower(title) LIKE ?', "%#{query.downcase}%")
+      @books = books.where('lower(title) LIKE ?', "%#{query.downcase}%").page(params[:page]).per(10)
     end
 
     # Apply genre filter if genre_id is present
     if genre_id.present?
-      @books = books.joins(:genres).where(genres: { id: genre_id })
+      @books = books.joins(:genres).where(genres: { id: genre_id }).page(params[:page]).per(10)
     end
 
 

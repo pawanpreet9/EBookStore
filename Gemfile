@@ -9,6 +9,10 @@ gem "faker"
 
 gem 'kaminari'
 
+gem 'bootstrap', '5.2.3'
+gem 'jquery-rails'
+
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

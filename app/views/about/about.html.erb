@@ -1,7 +1,14 @@
+<div class="container">
 <h1>About Page</h1>
+<div class="mt-4">
 <h3>Data Sources</h3>
 <p>I am plannig to use three different data sources. First, i will use the Books.csv which pulled from the online free dataset site and contain data related to the books. It structured as each row represent the book, with the columns of title, language_code, publisher, publication date , average rating, isbn and number of pages. To use this data there is need to create the books table with the seven columns - id, title, pages,language, average rating , publisher and publication data , This table contain the data fetched from this data source file about the books. Second source is the another author.csv file whihc contain the data about the books authors. This file is structured as each row represent the author with the coloumn author id and author name. To store this data there is need of author table with the two columns - author_id and author_name. The third data source is faker which used for creating the three another table related to the books - genres with two columns - id and name , author with two columns - author_id and name and review table with three columns - id , rating and comment. All these four models represent the data about the books such as its genres, reviews , author and store where its availables. The many to many relationship will be creted to the books and genre by joining the tables.Similarly, data pulled from the faker data source of the stores will be connected to the books with making the many-many relationship between the store and books table.However, the data fetched with the second data source -author.csv file will be used to represt the book with the author by making the one-many relatioship between books and authors table. Each book review is connected with foreign key by creating the one-many relation to the review.All these data will eventually used to display the each book with the required content to the users.</p>
+ </div>
+
+ <div class="mt-4">
 <h2>Database ERD</h2>
 <p>
   <img src="<%= asset_path('erdDiagram.jpg') %>" alt="ERD Diagram">
 </p>
+ </div>
+</div>

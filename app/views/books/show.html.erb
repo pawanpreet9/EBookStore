@@ -1,40 +1,36 @@
+<div class="container">
+  <h1><%= @book.title %></h1>
+  <p><strong>Author:</strong> <%= @book.author.name %></p>
+  <p><strong>ISBN:</strong> <%= @book.isbn.nil? ? 'Not Available' : @book.isbn %></p>
+  <p><strong>Genres:</strong></p>
+  <ul>
+    <% @book.genres.each do |genre| %>
+      <li><%= link_to genre.name, genre_path(genre) %></li>
+    <% end %>
+  </ul>
 
-
-
-<h1><%= @book.title %></h1>
-<p><strong>Author:</strong> <%= @book.author.name %></p>
-<p><strong>ISBN:</strong> <%= @book.isbn.nil? ? 'Not Available' : @book.isbn %></p>
-<p>
-            <strong>Genres:</strong>
-            </p>
-            <ul>
-              <% @book.genres.each do |genre| %>
-                 <li><%= link_to genre.name, genre_path(genre) %></li>
-              <% end %>
-            </ul>
-
-<p><strong>Average Rating:</strong><%= @book.average_rating %> </p>
-<% if @book.average_rating && @book.average_rating > 4.5 %>
-  <p><u>This book has an excellent average rating!</u></p>
-<% else %>
-  <p><u>The average rating of this book is not so good.</u></p>
-<% end %>
-<p><strong>Publication Date:</strong> <%= @book.published_date.nil? ? 'Not Available' : @book.published_date %></p>
-<p><strong>Piblisher</strong> <%= @book.publisher.nil? ? 'Not Available' : @book.publisher %></p>
-<p><strong>Number of Pages:</strong> <%= @book.pages.nil? ? 'Not Available' : @book.pages %></p>
-<p><strong>Language:</strong> <%= @book.language.nil? ? 'Not Available' : @book.language %></p>
-<p><strong>Stores:</strong></p>
-<ul>
-  <% @book.stores.each do |store| %>
-    <li><%= link_to store.name, store_path(store) %></li>
+  <p><strong>Average Rating:</strong> <%= @book.average_rating.nil? ? 'Not Available' : @book.average_rating %></p>
+  <% if @book.average_rating && @book.average_rating > 4.5 %>
+    <p><u>This book has an excellent average rating!</u></p>
+  <% else %>
+    <p><u>The average rating of this book is not so good.</u></p>
   <% end %>
-</ul>
+  <p><strong>Publication Date:</strong> <%= @book.published_date.nil? ? 'Not Available' : @book.published_date %></p>
+  <p><strong>Publisher:</strong> <%= @book.publisher.nil? ? 'Not Available' : @book.publisher %></p>
+  <p><strong>Number of Pages:</strong> <%= @book.pages.nil? ? 'Not Available' : @book.pages %></p>
+  <p><strong>Language:</strong> <%= @book.language.nil? ? 'Not Available' : @book.language %></p>
 
-<p>
-<strong>Reviews:</strong></p>
-<ul>
-  <% @book.reviews.each do |review| %>
-    <li><%= review.comment %></li>
-  <% end %>
-</ul>
+  <p><strong>Stores:</strong></p>
+  <ul>
+    <% @book.stores.each do |store| %>
+      <li><%= link_to store.name, store_path(store) %></li>
+    <% end %>
+  </ul>
 
+  <p><strong>Reviews:</strong></p>
+  <ul>
+    <% @book.reviews.each do |review| %>
+      <li><%= review.comment %></li>
+    <% end %>
+  </ul>
+</div>

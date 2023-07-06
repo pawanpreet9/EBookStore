@@ -1,36 +1,32 @@
+<%= form_tag search_books_path, method: :get, class: "form-inline mb-3" do %>
+  <div class="form-group mr-2">
+    <%= label_tag :query, "Search book name:", class: "mr-2" %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>
+  </div>
+  <div class="form-group mr-2">
+    <%= label_tag :genre, "Genre:", class: "mr-2" %>
+    <%= select_tag :genre, options_for_select(Genre.all.map { |g| [g.name, g.id] }, params[:genre]), { include_blank: true, class: "form-control" } %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 
-
-
-  <%= form_tag search_books_path, method: :get do %>
-    <div class="field">
-      <%= label_tag :query, "Search book name:" %>
-      <%= text_field_tag :query, params[:query] %>
-    </div>
-    <div class="field">
-      <%= label_tag :genre, "Genre" %>
-      <%= select_tag :genre, options_for_select(Genre.all.map { |g| [g.name, g.id] }, params[:genre]), include_blank: true %>
-    </div>
-    <%= submit_tag "Search" %>
+<h1>Books</h1>
+<%= paginate @books, class: "pagination" %>
+<ul class="list-group">
+  <% @books.each do |book| %>
+    <li class="list-group-item">
+      <%= link_to book.title, book_path(book) %>
+      <ul>
+        <li><strong>Author:</strong> <%= book.author.name %></li>
+        <li>
+          <strong>Genres:</strong>
+          <ul>
+            <% book.genres.each do |genre| %>
+              <li><%= genre.name %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </li>
   <% end %>
-
-  <h1>Books::</h1>
-  <%= paginate @books %>
-  <ul>
-    <% @books.each do |book| %>
-      <li>
-        <%= link_to book.title, book_path(book) %>
-        <ul>
-          <li><strong>Author:</strong> <%= book.author.name %></li>
-          <li>
-            <strong>Genres:</strong>
-            <ul>
-              <% book.genres.each do |genre| %>
-                <li><%= genre.name %></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-
+</ul>

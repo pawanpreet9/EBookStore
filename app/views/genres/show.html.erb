@@ -1,8 +1,12 @@
-<h1>Genre: <%= @genre.name %></h1>
+<div class="container">
+  <h1>Genre: <%= @genre.name %></h1>
 
-<% @books.each do |book| %>
-  <h3><%= link_to book.title, book_path(book) %></h3>
-  <p><strong>Author:</strong> <%= book.author.name %></p>
-
-  <hr>
-<% end %>
+  <% @books.each do |book| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h3 class="card-title"><%= link_to book.title, book_path(book) %></h3>
+        <p class="card-text"><strong>Author:</strong> <%= book.author.name %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

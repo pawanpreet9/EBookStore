@@ -14,3 +14,48 @@
  *= require_self
  */
  @import 'bootstrap';
+
+
+.form-inline {
+  justify-content: center;
+}
+
+
+.form-control {
+  width: 250px;
+}
+
+
+
+.list-group-item {
+  border: none;
+  background-color: #f8f9fa;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+.form-inline {
+  background-color: #f0f7f9;
+  color: #333333;
+}
+
+
+h1 ,h2,h3{
+  color: #736e6b;
+  text-shadow: 1px 1px 1px black;
+}
+
+
+.list-group-item {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+a {
+  color: #007bff;
+  text-shadow: 1px 1px 0px rgb(17, 15, 15);
+}
+.container {
+  text-align: center;
+}
